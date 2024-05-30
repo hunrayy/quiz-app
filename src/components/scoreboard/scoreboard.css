@@ -1,0 +1,31 @@
+.score-board-cover{
+    /* background-color: red; */
+    border: 3px solid rgba(255, 255, 255, 0.705);
+    border-radius: 20px;
+    width: 150px;
+    /* padding: 10px; */
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+}
+.your-score, .score{
+    padding: 5px 10px 5px 10px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.705);
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    color: orange;
+    gap: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+ul>li{
+    padding: 0px 10px 0 10px;
+}
+.test{
+    background-color: green;
+}
+.white-color{
+    color: white;
+}

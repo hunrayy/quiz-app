@@ -8,20 +8,28 @@
 .body-wrapper{
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to left, rgb(0, 0, 122), rgb(5, 5, 116));
+    /* background: linear-gradient(to left, rgb(0, 0, 122), rgb(5, 5, 116)); */
+    background: linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75));
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .game-box{
-    width: 50vw;
-    height: 70vh;
-    border: 7px solid rgb(0, 0, 102);
-    background: linear-gradient(to left, rgb(9, 9, 128), rgb(29, 1, 131));
+    /* width: 50vw; */
     position: relative;
-
+    width: 800px;
+    height: 70vh;
+    border: 7px solid rgba(255, 255, 255, 0.336);
+    /* border: 7px solid rgb(1, 1, 68); */
+    /* background: linear-gradient(to left, rgb(9, 9, 128), rgb(23, 1, 104)); */
+    background: url(https://media.gettyimages.com/id/1209901647/photo/who-wants-to-be-a-millionaire-eric-stonestreet-and-will-forte-twenty-years-after-the-prime.jpg?s=612x612&w=0&k=20&c=CQ0D4vQTR8ZTy6mIk4epgcOVoI5AwrP7WM0wDyrX-Oc=);
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 10px;
+    
 }
+
+
 .title{
     height: 70px;
     /* background-color: green; */
@@ -31,10 +39,9 @@
     font-weight: bold;
     color: white;
     gap: 20px;
-    /* font-size: 25px; */
-    font-size: 2vw;
-   color: blueviolet;
-   width: 100%;
+    font-size: 20px;
+   /* color: blueviolet; */
+   color: white;
 }
 .up{
     transform: translateY(-10px);
@@ -42,24 +49,37 @@
 .down{
     transform: translateY(10px);
 }
+
 .body{
     padding: 10px;
+    display: flex;
+    gap: 20px;
+    /* justify-content: space-between; */
+    /* background-color: green; */
+}
+.body-cover{
+    width: 80%;
 }
 .question-box{
-    width: 73%;
-    height: 35vh;
+    /* width: 100%%; */
+    height: 36vh;
     padding: 20px;
-    /* background-color: pink; */
-    border: 3px solid rgb(1, 16, 92);
+    /* background-color: rgba(0, 0, 0, 0.445); */
+    /* border: 3px solid rgb(1, 1, 68); */
+    /* border: 3px solid skyblue; */
+    border: 3px solid rgba(255, 255, 255, 0.705);
     color: white;
     font-weight: bold;
     font-size: 20px;
     border-radius: 20px;
+    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+    background-color: rgba(0, 0, 0, 0.205);
 }
+
 .option-box{
     display: flex;
-    /* border: 1px solid white; */
-    width: 73%;
+    /* border: 1px solid rgb(102, 100, 100); */
+    /* width: 73%;   */
     gap: 10px;
     padding: 10px 0 0 0;
 }
@@ -71,7 +91,17 @@
     height: 40px;
     border-radius: 20px;
     /* background-color: pink; */
-    border: 3px solid rgb(1, 16, 92);
+    border: 3px solid rgba(255, 255, 255, 0.705);
+    background-color: rgba(0, 0, 0, 0.205);
+
+
+    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+    
+    /* border: 3px solid rgb(1, 1, 68); */
+    
+
+    
+
 
     display: flex;
     align-items: center;
@@ -86,4 +116,37 @@
 }
 .option:hover{
     background-color: orange;
+    cursor: pointer;
 }
+
+
+@media (max-width: 767px) {
+    .scoreboard-cover-div{
+        display: none;
+        /* background-color: red; */
+    }
+    .body-cover{
+        width: 100%;
+    }
+    .option-box{
+        display: flex;
+        flex-direction: column;
+    }
+    .option{
+        height: 60px;
+        border-radius: 30px;
+    }
+    .game-box{
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+    }
+    .title{
+        /* width: 2000px; */
+        /* background-color: green; */
+        display: flex;
+        gap: 15px;
+        /* font-size: 12px; */
+    }
+    
+ }
