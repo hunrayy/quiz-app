@@ -4,11 +4,13 @@
     position: absolute ;
     top: 0;
     left: 0;
-    margin: 0;
+    /* margin: 0; */
     display: flex;
     justify-content: center;
     padding: 30px;
     background-color: rgba(128, 128, 128, 0.11);
+    overflow: auto;  /* Allow for scrolling */
+    height: 100vh;  /* Ensure it uses the full viewport height */
     
 }
 .all-questions-wrapper{
@@ -26,6 +28,8 @@
 
     animation-name: all-questions-wrapper;
     animation-duration: .3s;
+    max-height: 100%;  /* Ensure the wrapper respects the parent's scrollable area */
+    overflow-y: auto;  /* Allow vertical scrolling if content overflows */
 }
 
 @keyframes all-questions-wrapper {

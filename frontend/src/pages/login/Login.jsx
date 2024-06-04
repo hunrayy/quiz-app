@@ -4,6 +4,7 @@ import axios from "axios";
 import Cookie from "js-cookie"
 import localforage from "localforage";
 import { useNavigate } from "react-router-dom";
+import Error404 from "../../components/error404/Error404";
 
 const Login = () => {
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
@@ -101,10 +102,10 @@ const Login = () => {
 
     return (
         <div>
-            {isAdminLoggedIn ? <div>Error, page not found</div> :
+            {isAdminLoggedIn ? <Error404 /> :
             <div>
             <div className="login-page-container">
-                <h4>WHO WANTS TO BE A MILLIONAIRE</h4>
+                <h4 style={{textAlign: "center"}}>WHO WANTS TO BE A MILLIONAIRE</h4>
                 <div>
                     <form className="form" onSubmit={handleSubmit}>
                         <h4>Login</h4>

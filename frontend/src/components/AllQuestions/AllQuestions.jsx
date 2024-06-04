@@ -8,7 +8,10 @@ import { Trash3 } from "react-bootstrap-icons"
 import axios from "axios"
 import Cookies from "js-cookie"
 const AllQuestions =  () => {
-    const [allQuestions, setAllQuestions] = useState([])
+    const [allQuestions, setAllQuestions] = useState({
+        is_loading: true,
+        all_aquestions: []
+    })
 
 
 
@@ -23,14 +26,22 @@ const AllQuestions =  () => {
 
             console.log(feedback)
             if(feedback.data.code === "success"){
-                setAllQuestions(feedback.data.data)
+                setAllQuestions({
+                    is_loading: false,
+                    all_aquestions: feedback.data.data
+                })
             }
         })
     }, [])
 
     return <div className="all-questions-blur">
         <div className="all-questions-wrapper" onClick={(e) => e.stopPropagation()}>
-            {allQuestions ? allQuestions.slice().reverse().map((each_question) => {
+            {allQuestions.is_loading ? 
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div> 
+            : null}
+            {allQuestions.all_aquestions ? allQuestions.all_aquestions.slice().reverse().map((each_question) => {
                 // console.log(each_question)
                 return <div className="each-question">
                     <div style={{display: "flex", justifyContent: "right", gap: "7px", marginBottom: "10px"}}>
@@ -65,7 +76,7 @@ const AllQuestions =  () => {
                         <span>{each_question.rightOption}</span>
                     </div>
                 </div>})
-            : "no questions yet"}
+            : null}
         </div>
     </div>
 }
