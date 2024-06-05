@@ -83,7 +83,7 @@ const auth = (function(){
                     //dynamically generating a secret key by using the user's details and not some hard coded text
                     const secret_key = "jhgdhdhfsdgfhdsgfhdf"
 
-                    const token = await jwt.sign(payload, process.env.JWT_SECRET_KEY)
+                    const token = jwt.sign(payload, process.env.JWT_SECRET_KEY)
                     if(token){
                         return {
                             message: "token successfully generated",
@@ -168,13 +168,45 @@ const auth = (function(){
         }
     }
 
+    const generate_token_for_gamemode = async(email) => {
+        const payload = email
+        try{
+            const token = jwt.sign(payload, process.env.JWT_SECRET_KEY)
+            //token ready, now retrieve questions for display
+            const get_questions = await client.db(DB_NAME)
+                                    .collection(TB_QUESTIONS)
+                                    .aggregate([{ $sample: { size: 15 } }])
+                                    .toArray();
+            // console.log(get_questions)
+            const formattedQuestions = get_questions.map(question => ({
+                question: question.question,
+                options: question.options,
+                rightOption: question.rightOption
+            }));
+            return {
+                message: "token and questions for gamemeode successfully generated",
+                code: "success",
+                data: {
+                    token: token,
+                    questions: formattedQuestions
+                }
+            }
+        }catch(error){
+            return{
+                message: "error generating token",
+                code: "error"
+            }
+        }
+    }
+
     return {
         getUserDetailsByEmail: getUserDetailsByEmail,
         register: register,
         loginAdmin: loginAdmin,
         insertQuestionIntoDB: insertQuestionIntoDB,
         resolveUserId: resolveUserId,
-        get_all_questions: get_all_questions
+        get_all_questions: get_all_questions,
+        generate_token_for_gamemode: generate_token_for_gamemode
     }
     
 }())

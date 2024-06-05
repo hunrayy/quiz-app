@@ -8,6 +8,7 @@ import Error404 from "../../components/error404/Error404";
 
 const Login = () => {
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
+    const [gamemodeActive, setGamemodeActive] = useState(false)
     const navigate = useNavigate()
     const [login, setLogin] = useState({
         email: "",
@@ -98,11 +99,19 @@ const Login = () => {
             }
         })
 
+        //function to check if a user is currently in gamemode before displaying the page
+        const get_token = Cookie.get(import.meta.env.VITE_GAMEMODE_TOKEN)
+        if(get_token){
+            setGamemodeActive(true)
+        }else{
+            setGamemodeActive(false)
+        }
+
     }, [])
 
     return (
         <div>
-            {isAdminLoggedIn ? <Error404 /> :
+            {isAdminLoggedIn | gamemodeActive ? <Error404 /> :
             <div>
             <div className="login-page-container">
                 <h4 style={{textAlign: "center"}}>WHO WANTS TO BE A MILLIONAIRE</h4>

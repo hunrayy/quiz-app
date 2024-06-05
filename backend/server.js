@@ -182,6 +182,20 @@ server.get("/get-all-questions", verifyToken, async (request, response) => {
 })
 
 
+server.post("/generate_token_for_gamemode", async (request, response) => {
+    const user_email = request.body.user_email
+    if(!user_email){
+        response.send({
+            message: "invalid email",
+            code: "error"
+        })
+    }else{
+        const feedback = await auth.generate_token_for_gamemode(user_email)
+        response.send(feedback)
+    }
+})
+
+
 
 
 server.listen(PORT, console.log(`server is listening on port ${PORT}`))

@@ -36,9 +36,9 @@ const Error404 = () => {
       <h1 class="message__title">Page Not Found</h1>
       <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
     </div>
-    {/* <div class="error__nav e-nav">
-      <a href="http://www.thedresscounter.com" target="_blanck" class="e-nav__link"></a>
-    </div> */}
+    <div class="error__nav e-nav">
+      <button class="e-nav__link"></button>
+    </div>
   </div>
   {/* <!-- END Content --> */}
 

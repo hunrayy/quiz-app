@@ -248,8 +248,8 @@ button {
   display: inline-block;
   vertical-align: top;
   margin: 0 15px;
-  border: 1px solid #181828;
-  color: #181828;
+  border: 1px solid white;
+  color: white;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -262,7 +262,8 @@ button {
 .e-nav__link:before {
   content: '';
   height: 200px;
-  background: #212121;
+  /* background-color: rgba(255, 255, 255, 0.336); */
+  background-color: rgba(255, 255, 255, 0.445);
   position: absolute;
   top: 70px;
   right: 70px;
@@ -278,24 +279,26 @@ button {
   transition: all .3s;
   z-index: 999;
   position: relative;
+  color: white;
 }
 
-/* .e-nav__link:after {
+.e-nav__link:after {
   content: "Home Page";
-} */
+}
 
-/* .e-nav__link:hover:before {
+.e-nav__link:hover:before {
   top: -60px;
   right: -50px;
-} */
+}
 
-/* .e-nav__link:hover {
+.e-nav__link:hover {
   color: #fff;
-} */
 
-/* .e-nav__link:nth-child(2):hover:after {
-  color: #fff;
-} */
+}
+
+.e-nav__link:nth-child(2):hover:after {
+  color: black;
+}
 
 
 

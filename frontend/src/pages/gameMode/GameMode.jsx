@@ -7,10 +7,13 @@ import { useState, useEffect } from "react"
 import localforage from "localforage"
 import Cookie from "js-cookie"
 import Error404 from "../../components/error404/Error404"
+import { useNavigate } from "react-router-dom"
 
 
 const GameMode = () => {
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
+    const [gameModeActive, setGamemodeActive] = useState(false)
+    const navigate = useNavigate()
     useEffect(()=> {
         //function to check if the admin is logged in before displaying the page
         localforage.getItem("user_email").then((feedback) => {
@@ -21,9 +24,20 @@ const GameMode = () => {
             }
         })
 
+        //function to check if a user is currently in gamemode before displaying the page
+        const get_token = Cookie.get(import.meta.env.VITE_GAMEMODE_TOKEN)
+        if(get_token){
+            setGamemodeActive(true)
+        }else{
+            setGamemodeActive(false)
+            navigate("/", {
+                replace: true
+            })
+        }
+
     }, [])
     return <div>
-        {isAdminLoggedIn ? <Error404 /> : 
+        {isAdminLoggedIn | !gameModeActive ? <Error404 /> : 
 <div className="body-wrapper">
 <div className="game-box">
     <p className="title">

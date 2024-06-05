@@ -5,11 +5,14 @@ import { useState, useEffect } from "react"
 import localforage from "localforage"
 import Cookie from "js-cookie"
 import Error404 from "../../components/error404/Error404";
+import axios from "axios";
+import { SHA256 } from 'crypto-js';
 
 const Home = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const [gamemodeActive, setGamemodeActive] = useState(false)
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isEmailValid = emailRegex.test(email);
@@ -23,9 +26,38 @@ const Home = () => {
         setIsChecked(e.target.checked);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (isValid) {
-            navigate("/game-mode", { replace: true });
+            setEmail("")
+            const feedback = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/generate_token_for_gamemode`, {
+                user_email: email
+            })
+            // console.log(feedback)
+
+            if(feedback.data.code === "success"){
+                try{
+                    Cookie.set(import.meta.env.VITE_GAMEMODE_TOKEN, feedback.data.data.token);
+                    const questions = feedback.data.data.questions.map(question => {
+                        // Hash the "rightOption" key using SHA-256
+                        const hashedRightOption = SHA256(question.rightOption).toString(); // Use SHA256 here
+                        // Create a new question object with the hashed rightOption
+                        return {
+                            ...question,
+                            rightOption: hashedRightOption
+                        };
+                    });
+                    await localforage.setItem("questions", questions);
+                    navigate("/game-mode", { replace: true });
+                }catch(error){
+                    console.log(error)
+                    alert("Error navigating to gamemode, please retry")
+                }
+
+            }else{
+                alert("Error navigating to gamemode, please retry")
+            }
+
+
         } else {
             alert("Please enter a valid email and agree to the terms and conditions.");
         }
@@ -42,11 +74,20 @@ const Home = () => {
             }
         })
 
+
+        //function to check if a user is currently in gamemode before displaying the page
+        const get_token = Cookie.get(import.meta.env.VITE_GAMEMODE_TOKEN)
+        if(get_token){
+            setGamemodeActive(true)
+        }else{
+            setGamemodeActive(false)
+        }
+
     }, [])
 
     return (
         <div>
-            {isAdminLoggedIn ? <Error404 /> :
+            {isAdminLoggedIn | gamemodeActive ? <Error404 /> :
             <div className="disclaimer-body">
                 <div className="disclaimer-wrapper">
                     <div className="disclaimer-text">
