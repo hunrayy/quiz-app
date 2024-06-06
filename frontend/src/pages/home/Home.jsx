@@ -7,6 +7,7 @@ import Cookie from "js-cookie"
 import Error404 from "../../components/error404/Error404";
 import axios from "axios";
 import { SHA256 } from 'crypto-js';
+import bcrypt from "bcryptjs-react";
 
 const Home = () => {
     const navigate = useNavigate()
@@ -35,23 +36,30 @@ const Home = () => {
             // console.log(feedback)
 
             if(feedback.data.code === "success"){
-                try{
+                try {
+                   
                     Cookie.set(import.meta.env.VITE_GAMEMODE_TOKEN, feedback.data.data.token);
-                    const questions = feedback.data.data.questions.map(question => {
-                        // Hash the "rightOption" key using SHA-256
-                        const hashedRightOption = SHA256(question.rightOption).toString(); // Use SHA256 here
-                        // Create a new question object with the hashed rightOption
-                        return {
-                            ...question,
-                            rightOption: hashedRightOption
-                        };
-                    });
+                
+                    const questions = await Promise.all(feedback.data.data.questions.map(async question => {
+                        try {
+                            const hashedOption = await bcrypt.hash(question.rightOption, 10);
+                            return {
+                                ...question,
+                                rightOption: hashedOption
+                            };
+                        } catch (error) {
+                            throw new Error("Error hashing question: " + error.message);
+                        }
+                    }));
+                
                     await localforage.setItem("questions", questions);
+                
                     navigate("/game-mode", { replace: true });
-                }catch(error){
-                    console.log(error)
-                    alert("Error navigating to gamemode, please retry")
+                } catch (error) {
+                    console.error(error);
+                    alert("Error navigating to gamemode, please retry");
                 }
+                
 
             }else{
                 alert("Error navigating to gamemode, please retry")

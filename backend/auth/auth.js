@@ -168,6 +168,17 @@ const auth = (function(){
         }
     }
 
+
+    // Function to shuffle the options array
+    const shuffleArray = (array) => {
+        const shuffled = array.slice(); // Create a copy of the array
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+        }
+        return shuffled;
+    };
+
     const generate_token_for_gamemode = async(email) => {
         const payload = email
         try{
@@ -180,7 +191,7 @@ const auth = (function(){
             // console.log(get_questions)
             const formattedQuestions = get_questions.map(question => ({
                 question: question.question,
-                options: question.options,
+                options: shuffleArray(question.options),
                 rightOption: question.rightOption
             }));
             return {
