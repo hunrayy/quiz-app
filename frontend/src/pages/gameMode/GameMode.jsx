@@ -5,14 +5,45 @@ import localforage from "localforage"
 import Cookie from "js-cookie"
 import Error404 from "../../components/error404/Error404"
 import { useNavigate } from "react-router-dom"
+import bcrypt from "bcryptjs-react";
+import mainTheme from "../../audios/mainTheme.mp3"
+import correctAnswer from "../../audios/correctAnswer.mp3"
+import wrongAnswer from "../../audios/wrongAnswer.mp3"
 
+const mainThemeAudio = new Audio(mainTheme)
+const correctAnswerAudio = new Audio(correctAnswer)
+const wrongAnswerAudio = new Audio(wrongAnswer)
 const GameMode = () => {
+    // const audio = new Audio(main)
     const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false)
     const [gameModeActive, setGamemodeActive] = useState(false)
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(null);
+    const [isAudioNotificationVisible, setIsAudioNotificationVisible] = useState(true);
     const navigate = useNavigate()
 
+
+    const isOptionRight = async(optionPicked, rightOption) => {
+        
+       
+        const compareOption = await bcrypt.compare(optionPicked, rightOption)
+        console.log(compareOption)
+        
+        if(compareOption){
+            // alert("Correct, That's the right answer")
+            mainThemeAudio.pause()
+            correctAnswerAudio.play()
+            correctAnswerAudio.loop = true
+        }else{
+            mainThemeAudio.pause()
+            wrongAnswerAudio.play()
+            wrongAnswerAudio.loop = true
+        }
+
+    }
+
+
+    
 
     useEffect(()=> {
         //function to check if the admin is logged in before displaying the page
@@ -48,7 +79,11 @@ const GameMode = () => {
             }
         });
 
+
+
+
     }, [])
+
 
     useEffect(() => {
         // Call the displayQuestionOnPage function when currentQuestion changes
@@ -62,7 +97,18 @@ const GameMode = () => {
             {isAdminLoggedIn | !gameModeActive ? (
                 <Error404 />
             ) : (
-                <div className="body-wrapper">
+                isAudioNotificationVisible ? 
+                    <div className="body-wrapper">
+                        <div className="game-box">
+                            <div className="notification-wrapper">
+                                <p>This website uses audio. please adjust your volume accordingly</p>
+                                <button className="notification-wrapper-button btn btn-primary" onClick={()=> {setIsAudioNotificationVisible(false), mainThemeAudio.play(), mainThemeAudio.loop = true}}>Continue</button>
+                            </div>
+                        </div>
+
+                    </div>
+                :
+                (<div className="body-wrapper">
                     <div className="game-box">
                         <p className="title">
                             <span className="up">WHO</span>
@@ -79,32 +125,24 @@ const GameMode = () => {
                                         <p>{currentQuestion? currentQuestion.question : ""}</p>
                                     </div>
                                     <div className="option-box">
-                                        {/* <div className="first-option">
-                                            {currentQuestion? currentQuestion.options.map((option, index)=> {
+                                        <div className="first-option">
+                                            {currentQuestion ? currentQuestion.options.slice(0, 2).map((option, index) => {
                                                 return (
-                                                    <div key={index} className="option">{option}</div>
+                                                    <div key={index} className="option" onClick={() => isOptionRight(option, currentQuestion.rightOption)}>
+                                                        {String.fromCharCode(65 + index)}: {option}
+                                                    </div>
                                                 );
                                             }) : ""}
-                                        </div> */}
-                                        <div className="first-option">
-                                            <div className="option">
-                                                <span>A: </span>&nbsp;
-                                                <span>Ballet Slipper</span>
-                                            </div>
-                                            <div className="option">
-                                                <span>B: </span>&nbsp;
-                                                <span>Running show</span>
-                                            </div>
                                         </div>
+
                                         <div className="first-option">
-                                            <div className="option">
-                                                <span>C: </span>&nbsp;
-                                                <span>Sandal</span>
-                                            </div>
-                                            <div className="option">
-                                                <span>D: </span>&nbsp;
-                                                <span>Glass Slipper</span>
-                                            </div>
+                                            {currentQuestion ? currentQuestion.options.slice(2).map((option, index) => {
+                                                return (
+                                                    <div key={index} className="option" onClick={() => isOptionRight(option, currentQuestion.rightOption)}>
+                                                        {String.fromCharCode(67 + index)}: {option}
+                                                    </div>
+                                                );
+                                            }) : ""}
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +152,8 @@ const GameMode = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>)
+
             )}
         </div>
     );

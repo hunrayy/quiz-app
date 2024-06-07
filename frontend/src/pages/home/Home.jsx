@@ -9,7 +9,9 @@ import axios from "axios";
 import { SHA256 } from 'crypto-js';
 import bcrypt from "bcryptjs-react";
 
+
 const Home = () => {
+
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [isChecked, setIsChecked] = useState(false);
