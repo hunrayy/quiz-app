@@ -75,6 +75,7 @@ const GameMode = () => {
             }, 8000);
 
         }else{
+            sessionStorage.setItem("gamemode_state", "inactive");
             setFinalQuestionModal({
                 modal: false,
                 option: ""
@@ -135,6 +136,15 @@ const GameMode = () => {
             }
         });
 
+        //function to check if the user failed a question
+        const check_if_user_failed_question = sessionStorage.getItem("gamemode_state");
+        if(check_if_user_failed_question){
+            //display the failed question modal
+            setYouAreWrong(true)
+        }
+        //  console.log(check_if_user_failed_question)
+
+
 
 
 
@@ -181,13 +191,13 @@ const GameMode = () => {
                                         {youAreRightImage ? <img width="100%" height="100%" src="data:image/jpeg;base64,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" /> 
                                         :   (youAreWrong ? 
                                                 <div className="you-are-wrong-wrapper">
-                                                    <p>Sorry, that was not the correct answer.</p>
-                                                    <p>The correct answer is answer</p>
+                                                    <p>Sorry, that was not the correct answer. <br />
+                                                    The correct answer is answer</p>
                                                     <div className="you-are-wrong-button-wrapper">
-                                                        <button>Exit Game</button>
+                                                        <button style={{color: "red"}}>Exit Game</button>
                                                         <button>Report Question</button>
                                                     </div>
-                                                    <p>You are leaving with 300$</p>
+                                                    <p style={{textAlign: "center"}}>You are leaving with <span style={{color: "orange"}}>$300</span></p>
 
                                                 </div>
                                             :
@@ -214,7 +224,7 @@ const GameMode = () => {
                                         <div className="first-option">
                                             {currentQuestion ? currentQuestion.options.slice(0, 2).map((option, index) => {
                                                 return (
-                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage ? " option null" : "option"} disabled={finalQuestionModal.modal || youAreRightImage} onClick={() => {showModal(option, currentQuestion.rightOption)}}>
+                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong ? " option null" : "option"} disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong} onClick={() => {showModal(option, currentQuestion.rightOption)}}>
                                                         {String.fromCharCode(65 + index)}: {option}
                                                     </button>
                                                 );
@@ -224,7 +234,7 @@ const GameMode = () => {
                                         <div className="first-option">
                                             {currentQuestion ? currentQuestion.options.slice(2).map((option, index) => {
                                                 return (
-                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage ? "option null" : "option"}  disabled={finalQuestionModal.modal || youAreRightImage} onClick={() => showModal(option, currentQuestion.rightOption)}>
+                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong ? "option null" : "option"}  disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong} onClick={() => showModal(option, currentQuestion.rightOption)}>
                                                         {String.fromCharCode(67 + index)}: {option}
                                                     </button>
                                                 );
