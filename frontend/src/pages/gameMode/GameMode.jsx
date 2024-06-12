@@ -47,12 +47,34 @@ const GameMode = () => {
         if(compareOption){
             setIsOptionRight(true)
         }else{
-            //how do i then compare the 3 items in the remainingOptionsArray with the rightOption passed
+            let wrongOptions = [];
+            let rightOptionFound
+            // Iterate over each item in remainingOptionsArray
+            for (let option of remainingOptionsArray) {
+                // Compare the current option with the rightOption
+                const compareResult = await bcrypt.compare(option, rightOption);
+                if (!compareResult) {
+                    // If the current option is not the rightOption, add it to wrongOptions
+                    wrongOptions.push(option);
+                }else{
+                    rightOptionFound = true;
+                    console.log("the right option is" + option)
+                    setYouAreWrong({
+                        youAreWrongState: false,
+                        wrongOption: option
+                    })
+                }
+            }
+
+            // if (rightOptionFound) {
+            //     console.log("The right option is: " + rightOption);
+            // }
+
+
+
+
+
             setIsOptionRight(false)
-            setYouAreWrong({
-                youAreWrongState: false,
-                wrongOption: optionPicked
-            })
         }
     }
 
