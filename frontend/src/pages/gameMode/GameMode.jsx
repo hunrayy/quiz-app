@@ -34,7 +34,8 @@ const GameMode = () => {
     const navigate = useNavigate()
 
 
-    const showModal = async(optionPicked, rightOption) => {
+    const showModal = async(optionPicked, rightOption, remainingOptionsArray) => {
+        console.log(remainingOptionsArray)
         // console.log(optionPicked)
         setFinalQuestionModal({
             modal: true,
@@ -46,6 +47,7 @@ const GameMode = () => {
         if(compareOption){
             setIsOptionRight(true)
         }else{
+            //how do i then compare the 3 items in the remainingOptionsArray with the rightOption passed
             setIsOptionRight(false)
             setYouAreWrong({
                 youAreWrongState: false,
@@ -227,7 +229,7 @@ const GameMode = () => {
                                                     <p>Is that your final answer?</p>
                                                     <div className="final-answer-button-wrapper">
                                                         <button className="final-answer-button" onClick={checkOption}>Yes</button>
-                                                        <button className="final-answer-button" onClick={() => setFinalQuestionModal(false)}>No</button>
+                                                        <button className="final-answer-button" onClick={() => setFinalQuestionModal({modal: false, option: ""})}>No</button>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -236,8 +238,9 @@ const GameMode = () => {
                                     <div className="option-box">
                                         <div className="first-option">
                                             {currentQuestion ? currentQuestion.options.slice(0, 2).map((option, index) => {
+                                                const remainingOptions = currentQuestion.options.filter((opt, idx) => idx !== index);
                                                 return (
-                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? " option null" : "option"} disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} onClick={() => {showModal(option, currentQuestion.rightOption)}}>
+                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? " option null" : "option"} disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} onClick={() => {showModal(option, currentQuestion.rightOption, remainingOptions)}}>
                                                         {String.fromCharCode(65 + index)}: {option}
                                                     </button>
                                                 );
@@ -246,8 +249,9 @@ const GameMode = () => {
 
                                         <div className="first-option">
                                             {currentQuestion ? currentQuestion.options.slice(2).map((option, index) => {
+                                                const remainingOptions = currentQuestion.options.filter((opt, idx) => idx !== index);
                                                 return (
-                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? "option null" : "option"}  disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} onClick={() => showModal(option, currentQuestion.rightOption)}>
+                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? "option null" : "option"}  disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} onClick={() => showModal(option, currentQuestion.rightOption, remainingOptions)}>
                                                         {String.fromCharCode(67 + index)}: {option}
                                                     </button>
                                                 );
