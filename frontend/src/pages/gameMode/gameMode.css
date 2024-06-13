@@ -170,7 +170,20 @@
     cursor: default;
 }
 
+.correct-answer-blink{
+    animation-name: correct-answer-blink;
+    /* animation-duration: 1s; */
+    animation-iteration-count: infinite;
 
+}
+
+@keyframes correct-answer-blink {
+    from{
+        /* background-color: white; */
+    }to{
+        background-color: green;
+    }
+}
 
 
 

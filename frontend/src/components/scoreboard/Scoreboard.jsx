@@ -2,16 +2,17 @@
 
 
 import { useState, useEffect } from "react";
+import Cookie from "js-cookie";
 import "./scoreboard.css"
 const Scoreboard = () => {
     const [has_animation_happened, set_has_animation_happened] = useState(null)
     setTimeout(() => {
         // Store the value in browser storage after 7 seconds
-        sessionStorage.setItem("has_animation_happened", "true");
+        Cookie.set("has_animation_happened", "true");
         set_has_animation_happened(true)
     }, 7000);
     useEffect(()=> {
-        const getItem = sessionStorage.getItem("has_animation_happened");
+        const getItem = Cookie.get("has_animation_happened");
         if(getItem){
             set_has_animation_happened(true)
         }else{

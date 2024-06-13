@@ -9,6 +9,7 @@ import bcrypt from "bcryptjs-react";
 import mainTheme from "../../audios/mainTheme.mp3"
 import correctAnswer from "../../audios/correctAnswer.mp3"
 import wrongAnswer from "../../audios/wrongAnswer.mp3"
+import Cookies from "js-cookie"
 
 const mainThemeAudio = new Audio(mainTheme)
 const correctAnswerAudio = new Audio(correctAnswer)
@@ -27,7 +28,7 @@ const GameMode = () => {
     const [youAreRightImage, setYouAreRightImage] = useState(false)
     const [youAreWrong, setYouAreWrong] = useState({
         youAreWrongState: false,
-        wrongOption: ""
+        rightOption: ""
     })
     const [isOptionRight, setIsOptionRight] = useState(false)
 
@@ -43,9 +44,11 @@ const GameMode = () => {
         })
 
         bcrypt.compare(optionPicked, rightOption).then((compareOption) => {
+            // console.log(compareOption)
             if(compareOption){
                 setIsOptionRight(true)
             }else{
+                setIsOptionRight(false)
                 // Iterate over each item in remainingOptionsArray
                 for (let option of remainingOptionsArray) {
                     // Compare the current option with the rightOption
@@ -57,7 +60,6 @@ const GameMode = () => {
                             
                     })
                 }
-                // setIsOptionRight(false)
             }
 
         })
@@ -67,7 +69,7 @@ const GameMode = () => {
     const handleRightOptionFound = (option) => {
         setYouAreWrong({
             youAreWrongState: false,
-            wrongOption: option
+            rightOption: option
         });
     }
     // useEffect(() => {
@@ -104,7 +106,7 @@ const GameMode = () => {
         }else{
             const obj = {
                 gameModeState: "active",
-                identity: youAreWrong.wrongOption
+                identity: youAreWrong.rightOption
             }
             await localforage.setItem("gamemode_state", obj);
             setFinalQuestionModal({
@@ -133,6 +135,27 @@ const GameMode = () => {
     }
 
 
+
+
+
+    const handleExitGame = async() => {
+        try{
+            const clear_questions = await localforage.clear()
+        const clear_game_token = Cookies.remove("gamemode_token");
+        const clear_animation = Cookies.remove("has_animation_happened");
+
+        if(clear_questions && clear_game_token && clear_animation){
+            wrongAnswerAudio.pause()
+            wrongAnswerAudio.currentTime = 0
+            navigate("/", {
+                replace: true
+            })
+        }
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     
 
     useEffect(()=> {
@@ -159,10 +182,18 @@ const GameMode = () => {
         // Retrieve questions from localforage
         localforage.getItem("questions").then((storedQuestions) => {
             if (storedQuestions && storedQuestions.length > 0) {
+                const get_cookies = Cookies.get("has_animation_happened")
+                if(get_cookies){
+                    setQuestions(storedQuestions);
+                    setCurrentQuestion(storedQuestions[0]);
+                }else{
+                    setTimeout(()=> {
+                        setQuestions(storedQuestions);
+                        setCurrentQuestion(storedQuestions[0]);
+                    }, 7000)
+                }
                 // Set the questions state
-                setQuestions(storedQuestions);
                 // Set the currentQuestion state to the first question
-                setCurrentQuestion(storedQuestions[0]);
             } else {
                 // Handle case where no questions are found
                 // For example, display an error message or redirect
@@ -179,7 +210,7 @@ const GameMode = () => {
                 wrongAnswerAudio.play()
                 setYouAreWrong({
                     youAreWrongState: true,
-                    wrongOption: feedback.identity
+                    rightOption: feedback.identity
                 })
             }
         });
@@ -224,9 +255,9 @@ const GameMode = () => {
                                         :   (youAreWrong.youAreWrongState ? 
                                                 <div className="you-are-wrong-wrapper">
                                                     <p>Sorry, that was not the correct answer. <br />
-                                                    The correct answer is {youAreWrong.wrongOption}</p>
+                                                    The correct answer is <span>{youAreWrong.rightOption}</span></p>
                                                     <div className="you-are-wrong-button-wrapper">
-                                                        <button style={{color: "red"}}>Exit Game</button>
+                                                        <button style={{color: "red"}} onClick={handleExitGame}>Exit Game</button>
                                                         <button>Report Question</button>
                                                     </div>
                                                     <p style={{textAlign: "center"}}>You are leaving with <span style={{color: "orange"}}>$300</span></p>
@@ -257,7 +288,12 @@ const GameMode = () => {
                                             {currentQuestion ? currentQuestion.options.slice(0, 2).map((option, index) => {
                                                 const remainingOptions = currentQuestion.options.filter((opt, idx) => idx !== index);
                                                 return (
-                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? " option null" : "option"} disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} onClick={() => {showModal(option, currentQuestion.rightOption, remainingOptions)}}>
+                                                    <button key={index} 
+                                                        className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? " option null" : "option"} 
+                                                        disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} 
+                                                        onClick={() => {showModal(option, currentQuestion.rightOption, remainingOptions)}} 
+                                                        style={!finalQuestionModal.modal && youAreWrong.youAreWrongState && youAreWrong.rightOption == option ? {animationName: "correct-answer-blink", animationDuration: ".8s", animationIterationCount: "infinite"} : (finalQuestionModal.option == option ? {backgroundColor: "orange"} : null)}
+                                                    >
                                                         {String.fromCharCode(65 + index)}: {option}
                                                     </button>
                                                 );
@@ -268,7 +304,11 @@ const GameMode = () => {
                                             {currentQuestion ? currentQuestion.options.slice(2).map((option, index) => {
                                                 const remainingOptions = currentQuestion.options.filter((opt, idx) => idx !== index);
                                                 return (
-                                                    <button key={index} className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? "option null" : "option"}  disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} onClick={() => showModal(option, currentQuestion.rightOption, remainingOptions)}>
+                                                    <button key={index} 
+                                                        className={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState ? "option null" : "option"}  
+                                                        disabled={finalQuestionModal.modal || youAreRightImage || youAreWrong.youAreWrongState} 
+                                                        onClick={() => showModal(option, currentQuestion.rightOption, remainingOptions)} 
+                                                        style={!finalQuestionModal.modal && youAreWrong.youAreWrongState && youAreWrong.rightOption == option ? {animationName: "correct-answer-blink", animationDuration: ".8s", animationIterationCount: "infinite"} : (finalQuestionModal.option == option ? {backgroundColor: "orange"} : null)}>
                                                         {String.fromCharCode(67 + index)}: {option}
                                                     </button>
                                                 );
