@@ -34,49 +34,44 @@ const GameMode = () => {
     const navigate = useNavigate()
 
 
-    const showModal = async(optionPicked, rightOption, remainingOptionsArray) => {
-        console.log(remainingOptionsArray)
+    const showModal = (optionPicked, rightOption, remainingOptionsArray) => {
+        // console.log(remainingOptionsArray)
         // console.log(optionPicked)
         setFinalQuestionModal({
             modal: true,
             option: optionPicked
         })
 
-        const compareOption = await bcrypt.compare(optionPicked, rightOption)
-        
-        if(compareOption){
-            setIsOptionRight(true)
-        }else{
-            let wrongOptions = [];
-            let rightOptionFound
-            // Iterate over each item in remainingOptionsArray
-            for (let option of remainingOptionsArray) {
-                // Compare the current option with the rightOption
-                const compareResult = await bcrypt.compare(option, rightOption);
-                if (!compareResult) {
-                    // If the current option is not the rightOption, add it to wrongOptions
-                    wrongOptions.push(option);
-                }else{
-                    rightOptionFound = true;
-                    console.log("the right option is" + option)
-                    setYouAreWrong({
-                        youAreWrongState: false,
-                        wrongOption: option
+        bcrypt.compare(optionPicked, rightOption).then((compareOption) => {
+            if(compareOption){
+                setIsOptionRight(true)
+            }else{
+                // Iterate over each item in remainingOptionsArray
+                for (let option of remainingOptionsArray) {
+                    // Compare the current option with the rightOption
+                    bcrypt.compare(option, rightOption).then((compareResult) => {
+                        if (compareResult) {
+                            // console.log(compareResult)
+                            handleRightOptionFound(option);
+                        }
+                            
                     })
                 }
+                // setIsOptionRight(false)
             }
 
-            // if (rightOptionFound) {
-            //     console.log("The right option is: " + rightOption);
-            // }
-
-
-
-
-
-            setIsOptionRight(false)
-        }
+        })
+        
     }
+
+    const handleRightOptionFound = (option) => {
+        setYouAreWrong({
+            youAreWrongState: false,
+            wrongOption: option
+        });
+    }
+    // useEffect(() => {
+    // }, [youAreWrong]);
 
     const checkOption = async() => {
         if(isOptionRight){
