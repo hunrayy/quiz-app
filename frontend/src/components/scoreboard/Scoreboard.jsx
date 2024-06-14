@@ -8,7 +8,7 @@ const Scoreboard = () => {
     const [has_animation_happened, set_has_animation_happened] = useState(null)
     setTimeout(() => {
         // Store the value in browser storage after 7 seconds
-        Cookie.set("has_animation_happened", "true");
+        Cookie.set("has_animation_happened", new Date().getTime());
         set_has_animation_happened(true)
     }, 7000);
     useEffect(()=> {

@@ -141,16 +141,16 @@ const GameMode = () => {
     const handleExitGame = async() => {
         try{
             const clear_questions = await localforage.clear()
-        const clear_game_token = Cookies.remove("gamemode_token");
-        const clear_animation = Cookies.remove("has_animation_happened");
+            const clear_game_token = Cookies.remove("gamemode_token");
+            const clear_animation = Cookies.remove("has_animation_happened");
 
-        if(clear_questions && clear_game_token && clear_animation){
-            wrongAnswerAudio.pause()
-            wrongAnswerAudio.currentTime = 0
-            navigate("/", {
-                replace: true
-            })
-        }
+            // if(clear_questions && clear_game_token){
+                wrongAnswerAudio.pause()
+                wrongAnswerAudio.currentTime = 0
+                navigate("/", {
+                    replace: true
+                })
+            // }
         }catch(error){
             console.log(error)
         }
@@ -190,7 +190,7 @@ const GameMode = () => {
                     setTimeout(()=> {
                         setQuestions(storedQuestions);
                         setCurrentQuestion(storedQuestions[0]);
-                    }, 7000)
+                    }, 9000)
                 }
                 // Set the questions state
                 // Set the currentQuestion state to the first question
@@ -297,7 +297,7 @@ const GameMode = () => {
                                                         {String.fromCharCode(65 + index)}: {option}
                                                     </button>
                                                 );
-                                            }) : ""}
+                                            }) :    <div><button className="option" style={{marginBottom: "10px"}}></button> <button className="option"></button></div>}
                                         </div>
 
                                         <div className="first-option">
@@ -312,7 +312,7 @@ const GameMode = () => {
                                                         {String.fromCharCode(67 + index)}: {option}
                                                     </button>
                                                 );
-                                            }) : ""}
+                                            }) :   <div><button className="option" style={{marginBottom: "10px"}}></button> <button className="option"></button></div>}
                                         </div>
                                     </div>
                                 </div>
