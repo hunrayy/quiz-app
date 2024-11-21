@@ -1,3 +1,58 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import "./home.css"
 import { useNavigate } from "react-router-dom"
 import { ArrowRight } from 'react-bootstrap-icons';
@@ -77,7 +132,7 @@ const Home = () => {
     useEffect(()=> {
         //function to check if the admin is logged in before displaying the page
         localforage.getItem("user_email").then((feedback) => {
-            if (feedback && Cookie.get(import.meta.env.VITE_TOKEN_NAME)){
+            if (feedback && Cookie.get('loginToken')){
                 setIsAdminLoggedIn(true)
             }else{
                 setIsAdminLoggedIn(false)
@@ -86,7 +141,7 @@ const Home = () => {
 
 
         //function to check if a user is currently in gamemode before displaying the page
-        const get_token = Cookie.get(import.meta.env.VITE_GAMEMODE_TOKEN)
+        const get_token = Cookie.get('gameModeToken')
         if(get_token){
             setGamemodeActive(true)
         }else{

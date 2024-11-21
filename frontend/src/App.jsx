@@ -14,8 +14,9 @@ function App() {
       <Route path="*" element={<Error404 />} />
       <Route path="/" element={<Home />} />
       <Route path="/game-mode" element={<GameMode />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/dashboard/:token" element={<AdminDashboard />} />
+      <Route path="/admin/login" element={<Login />} />
+      {/* <Route path="/dashboard/:token" element={<AdminDashboard />} /> */}
+      <Route path="/app/private-route/admin/dashboard" element={<AdminDashboard />} />
     </Routes>
     </>
   )

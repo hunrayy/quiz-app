@@ -87,7 +87,7 @@ const auth = (function(){
                     if(token){
                         return {
                             message: "token successfully generated",
-                            code: "token-generated",
+                            code: "login-success",
                             data: {
                                 email: email,
                                 token: token

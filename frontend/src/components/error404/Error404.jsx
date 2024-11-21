@@ -2,7 +2,23 @@
 
 
 import "./error404.css"
+import { useNavigate } from "react-router-dom"
+import localforage from "localforage"
+import Cookie from "js-cookie"
 const Error404 = () => {
+  const navigate = useNavigate()
+
+  const handleNavigateUser = () => {
+    localforage.getItem("user_email").then((feedback) => {
+      if (feedback && Cookie.get('gameModeToken')){
+          navigate('/game-mode', {replace: true})
+      }else if(feedback && Cookie.get('loginToken')){
+        navigate('/app/private-route/admin/dashboard', {replace: true})
+      }else{
+        navigate('/', {replace: true})
+      }
+  })
+  }
     return <div style={{background: "linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75))"}}>
         {/* <a href="https://codepen.io/uiswarup/full/vYPxywO" target="_blank"> */}
   <header class="top-header">
@@ -37,7 +53,7 @@ const Error404 = () => {
       <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
     </div>
     <div class="error__nav e-nav">
-      <button class="e-nav__link"></button>
+      <button class="e-nav__link" onClick={handleNavigateUser}></button>
     </div>
   </div>
   {/* <!-- END Content --> */}

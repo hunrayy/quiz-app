@@ -57,9 +57,9 @@ const Login = () => {
                 email: login.email,
                 password: login.password
             })
-            // console.log(login_feedback)
+            console.log(login_feedback)
             if(login_feedback.data.code == "login-success"){
-                Cookie.set("token", login_feedback.data.data.token)
+                Cookie.set("loginToken", login_feedback.data.data.token)
                 await localforage.setItem("user_email", login_feedback.data.data.email)
                 setLogin({
                     email: "",
@@ -68,7 +68,9 @@ const Login = () => {
                     is_loading: false,
                     server_response: <div className="alert alert-success">{login_feedback.data.message}</div>
                 })
-                const adminDashboardRoute = `/dashboard/${login_feedback.data.data.token}`
+                // const adminDashboardRoute = `/dashboard/${login_feedback.data.data.token}`
+                const adminDashboardRoute = `/app/private-route/admin/dashboard`
+                
                 navigate(adminDashboardRoute, {
                     replace: true
                 })
@@ -92,7 +94,7 @@ const Login = () => {
     useEffect(()=> {
         //function to check if the admin is logged in before displaying the page
         localforage.getItem("user_email").then((feedback) => {
-            if (feedback && Cookie.get(import.meta.env.VITE_TOKEN_NAME)){
+            if (feedback && Cookie.get('loginToken')){
                 setIsAdminLoggedIn(true)
             }else{
                 setIsAdminLoggedIn(false)
@@ -100,7 +102,7 @@ const Login = () => {
         })
 
         //function to check if a user is currently in gamemode before displaying the page
-        const get_token = Cookie.get(import.meta.env.VITE_GAMEMODE_TOKEN)
+        const get_token = Cookie.get('gameModeToken')
         if(get_token){
             setGamemodeActive(true)
         }else{
