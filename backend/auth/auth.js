@@ -7,7 +7,7 @@ const DB_NAME = process.env.DB_NAME
 const TB_ADMIN = process.env.TB_ADMIN
 const TB_QUESTIONS = process.env.TB_QUESTIONS
 const jwt = require("jsonwebtoken")
-
+const questions = require('../questions.json')
 const auth = (function(){
     const getUserDetailsByEmail = async (email) => {
 
@@ -111,11 +111,11 @@ const auth = (function(){
 
     }
 
-    const insertQuestionIntoDB = async (admin_id, question, firstOption, secondOption, thirdOption, fourthOption, rightOption) => {
+    const insertQuestionIntoDB = async (question, firstOption, secondOption, thirdOption, fourthOption, rightOption) => {
         const options_array = []
         options_array.push(firstOption, secondOption, thirdOption, fourthOption) //insert all options into an array before storing into the database
         const obj = {
-            admin_id: admin_id,
+            // admin_id: admin_id,
             question: question,
             options: options_array,
             rightOption: rightOption
@@ -211,6 +211,46 @@ const auth = (function(){
         }
     }
 
+    const registerSuperAdmin = async () => {
+        try{
+            //check if a root admin exists already
+            const adminExists = await client.db(DB_NAME).collection(TB_ADMIN).findOne({});
+            if(!adminExists){
+                //no root admin exists, proceed to create one
+                const registerAdmin = auth.register('johndoe@gmail.com', 'password')
+                console.log("Super admin with email: 'johndoe@gmail.com' and password: 'password' created successfully")
+            }
+        }catch(error){
+            console.log(error)
+            return{
+                message: "An error occured while registering a super admin",
+                code: "error",
+                reason: error.message
+            }
+        }
+    }
+    const insertDummyQuestions = async () => {
+        //check if questions exists in the database
+        try{
+            const check_if_questions_exists = await client.db(DB_NAME).collection(TB_QUESTIONS).find().toArray();
+            if(check_if_questions_exists.length == 0){
+                //questions does not exist. next insert json question into database
+                questions.map((question)=> {
+                    auth.insertQuestionIntoDB(question.question, question.firstOption, question.secondOption, question.thirdOption, question.fourthOption, question.rightOption)
+                })
+                console.log('default questions inserted into database successfully')
+            }
+        }catch(error){
+            return{
+                message: "An error occured while inserting questions",
+                code: "error",
+                reason: error.message
+            }
+        }
+
+
+    }
+
     return {
         getUserDetailsByEmail: getUserDetailsByEmail,
         register: register,
@@ -218,7 +258,9 @@ const auth = (function(){
         insertQuestionIntoDB: insertQuestionIntoDB,
         resolveUserId: resolveUserId,
         get_all_questions: get_all_questions,
-        generate_token_for_gamemode: generate_token_for_gamemode
+        generate_token_for_gamemode: generate_token_for_gamemode,
+        registerSuperAdmin: registerSuperAdmin,
+        insertDummyQuestions: insertDummyQuestions
     }
     
 }())

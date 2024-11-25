@@ -95,7 +95,7 @@ const Home = () => {
             if(feedback.data.code === "success"){
                 try {
                    
-                    Cookie.set(import.meta.env.VITE_GAMEMODE_TOKEN, feedback.data.data.token);
+                    Cookie.set('gameModeToken', feedback.data.data.token);
                 
                     const questions = await Promise.all(feedback.data.data.questions.map(async question => {
                         try {
@@ -138,6 +138,7 @@ const Home = () => {
                 setIsAdminLoggedIn(false)
             }
         })
+        console.log(gamemodeActive)
 
 
         //function to check if a user is currently in gamemode before displaying the page

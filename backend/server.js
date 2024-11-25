@@ -28,7 +28,8 @@ const verifyToken = async (request, response, next) => {
         request.user_id = resolveUserId
 
         // console.log(resolveUserId)
-        
+
+        next()
     }catch(error){
         console.log("from try/catch: ", error)
         response.send({
@@ -39,48 +40,51 @@ const verifyToken = async (request, response, next) => {
 
 
 
+    // next()
 
-    next()
 }
-const verifyTokenExample = async (request, response, next) => {
+// const verifyTokenExample = async (request, response, next) => {
     
-    const authorization = request.headers.authorization
-    // console.log("from server: ")
-    let token = authorization.split(" ")[1]
-    // try{
-    // console.log("from verify token: ", token)
-        const jwt_verification = jwt.verify(token, process.env.JWT_SECRETE_KEY)
-        // console.log("from verify token: ", jwt_verification)
+//     const authorization = request.headers.authorization
+//     // console.log("from server: ")
+//     let token = authorization.split(" ")[1]
+//     // try{
+//     // console.log("from verify token: ", token)
+//         const jwt_verification = jwt.verify(token, process.env.JWT_SECRETE_KEY)
+//         // console.log("from verify token: ", jwt_verification)
 
-        request.username = jwt_verification.username
+//         request.username = jwt_verification.username
 
-        const get_user_feedback = await User.getUserDetailsByUsername(request.username)
-        // console.log(get_user_feedback)
-        if(get_user_feedback.code === "success"){
-            const mongoObjectId = get_user_feedback.data._id
-            let user_id = User.resolveUserId(mongoObjectId)
-            request.user_id = user_id;
-            // console.log(user_id)
+//         const get_user_feedback = await User.getUserDetailsByUsername(request.username)
+//         // console.log(get_user_feedback)
+//         if(get_user_feedback.code === "success"){
+//             const mongoObjectId = get_user_feedback.data._id
+//             let user_id = User.resolveUserId(mongoObjectId)
+//             request.user_id = user_id;
+//             // console.log(user_id)
+
+//         // next()
+
             
-        }else{
-            return response.send({
-                message: "Invalid token",
-                code: "authentication-error"
+//         }else{
+//             return response.send({
+//                 message: "Invalid token",
+//                 code: "authentication-error"
 
-            })
-        }
-    // }catch(error){
-    //     response.send({
-    //         message: "Invalid token",
-    //         reason: error.mesage,
-    //         code: "authentication-error"
+//             })
+//         }
+//     // }catch(error){
+//     //     response.send({
+//     //         message: "Invalid token",
+//     //         reason: error.mesage,
+//     //         code: "authentication-error"
 
-    //     })
-    // }
+//     //     })
+//     // }
 
 
-    next()
-}
+//     next()
+// }
 
 
 
@@ -99,6 +103,7 @@ const verifyTokenExample = async (request, response, next) => {
 //     }
 
 // })
+
 
 server.post("/admin-login", async(request, response) => {
     const { email, password } = request.body
@@ -152,7 +157,7 @@ server.post("/insert-content", verifyToken, async (request, response) => {
     }else{
         //store the question into the database
         try{
-            const feedback = await auth.insertQuestionIntoDB(admin_id, question, firstOption, secondOption, thirdOption, fourthOption, rightOption)
+            const feedback = await auth.insertQuestionIntoDB(question, firstOption, secondOption, thirdOption, fourthOption, rightOption)
             response.send(feedback)
             console.log(feedback)
         }catch(error){
@@ -197,5 +202,16 @@ server.post("/generate_token_for_gamemode", async (request, response) => {
 
 
 
+// server.listen(PORT, () =>
+//     console.log(`Server is listening on port ${PORT}`)
+// );
+{(async () => {
+    // Initialize default admin
+    await auth.registerSuperAdmin()
+    await auth.insertDummyQuestions()
 
-server.listen(PORT, console.log(`server is listening on port ${PORT}`))
+    // Start the server
+    server.listen(PORT, () =>
+        console.log(`Server is listening on port ${PORT}`)
+    );
+})();}
