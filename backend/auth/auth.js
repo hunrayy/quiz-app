@@ -111,14 +111,15 @@ const auth = (function(){
 
     }
 
-    const insertQuestionIntoDB = async (question, firstOption, secondOption, thirdOption, fourthOption, rightOption) => {
+    const insertQuestionIntoDB = async (question, firstOption, secondOption, thirdOption, fourthOption, rightOption, difficultyLevel) => {
         const options_array = []
         options_array.push(firstOption, secondOption, thirdOption, fourthOption) //insert all options into an array before storing into the database
         const obj = {
             // admin_id: admin_id,
             question: question,
             options: options_array,
-            rightOption: rightOption
+            rightOption: rightOption,
+            difficultyLevel: difficultyLevel
         }
         try{
             const feedback = await client.db(DB_NAME).collection(TB_QUESTIONS).insertOne(obj)
@@ -185,15 +186,53 @@ const auth = (function(){
         try{
             const token = jwt.sign(payload, process.env.JWT_SECRET_KEY)
             //token ready, now retrieve questions for display
+            // const get_questions = await client.db(DB_NAME)
+            //                         .collection(TB_QUESTIONS)
+            //                         .aggregate([{ $sample: { size: 15 } }])
+            //                         .toArray();
             const get_questions = await client.db(DB_NAME)
-                                    .collection(TB_QUESTIONS)
-                                    .aggregate([{ $sample: { size: 15 } }])
-                                    .toArray();
-            // console.log(get_questions)
-            const formattedQuestions = get_questions.map(question => ({
+                .collection(TB_QUESTIONS)
+                .aggregate([
+                    {
+                        $facet: {
+                            easyQuestions: [
+                                { $match: { difficultyLevel: "easy" } },
+                                { $sample: { size: 4 } }
+                            ],
+                            hardQuestions: [
+                                { $match: { difficultyLevel: "hard" } },
+                                { $sample: { size: 6 } }
+                            ],
+                            difficultQuestions: [
+                                { $match: { difficultyLevel: "difficult" } },
+                                { $sample: { size: 5 } }
+                            ]
+                        }
+                    },
+                    {
+                        $project: {
+                            questions: {
+                                $concatArrays: [
+                                    "$easyQuestions",
+                                    "$hardQuestions",
+                                    "$difficultQuestions"
+                                ]
+                            }
+                        }
+                    }
+                ])
+                .toArray();
+
+            // Extract questions array
+            const questions = get_questions.length ? get_questions[0].questions : [];
+
+
+
+            const formattedQuestions = questions.map((question, index) => ({
                 question: question.question,
                 options: shuffleArray(question.options),
-                rightOption: question.rightOption
+                rightOption: question.rightOption,
+                index: index
             }));
             return {
                 message: "token and questions for gamemeode successfully generated",
@@ -217,6 +256,7 @@ const auth = (function(){
             const adminExists = await client.db(DB_NAME).collection(TB_ADMIN).findOne({});
             if(!adminExists){
                 //no root admin exists, proceed to create one
+                console.log("Creating Super admin...")
                 const registerAdmin = auth.register('johndoe@gmail.com', 'password')
                 console.log("Super admin with email: 'johndoe@gmail.com' and password: 'password' created successfully")
             }
@@ -235,8 +275,9 @@ const auth = (function(){
             const check_if_questions_exists = await client.db(DB_NAME).collection(TB_QUESTIONS).find().toArray();
             if(check_if_questions_exists.length == 0){
                 //questions does not exist. next insert json question into database
+                console.log('inserting default questions into database...')
                 questions.map((question)=> {
-                    auth.insertQuestionIntoDB(question.question, question.firstOption, question.secondOption, question.thirdOption, question.fourthOption, question.rightOption)
+                    auth.insertQuestionIntoDB(question.question, question.firstOption, question.secondOption, question.thirdOption, question.fourthOption, question.rightOption , question.difficultyLevel)
                 })
                 console.log('default questions inserted into database successfully')
             }

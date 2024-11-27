@@ -1,6 +1,194 @@
 [
     {
-        "question": "test first question",
+        "question": "What is the largest mammal in the world?",
+        "firstOption": "African elephant",
+        "secondOption": "Hippopotamus",
+        "thirdOption": "Giraffe",
+        "fourthOption": "Blue Whale",
+        "rightOption": "Blue Whale",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "Which Planet is closest to the sun?",
+        "firstOption": "Mars",
+        "secondOption": "Mecury",
+        "thirdOption": "Earth",
+        "fourthOption": "Venus",
+        "rightOption": "Mecury",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What Vitamin do we get from the sun?",
+        "firstOption": "Vitamin A",
+        "secondOption": "Vitamin C",
+        "thirdOption": "Vitamin D",
+        "fourthOption": "Vitamin E",
+        "rightOption": "Vitamin D",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "Which bird can hover like a helicopter",
+        "firstOption": "A Finch",
+        "secondOption": "A Swallow",
+        "thirdOption": "A Parakeet",
+        "fourthOption": "A Humming bird",
+        "rightOption": "A Humming bird",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What are dogs commonly known to bury in the back yard?",
+        "firstOption": "Cats",
+        "secondOption": "Bone",
+        "thirdOption": "Flower",
+        "fourthOption": "The dead",
+        "rightOption": "Bone",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "Which animal is known as man's best friend",
+        "firstOption": "Cat",
+        "secondOption": "Horse",
+        "thirdOption": "Dog",
+        "fourthOption": "Cow",
+        "rightOption": "Dog",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What is the capital of Peru",
+        "firstOption": "Madrid",
+        "secondOption": "Para",
+        "thirdOption": "Lima",
+        "fourthOption": "Sucre",
+        "rightOption": "Lima",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Which Planet is known as the 'Red Planet'?",
+        "firstOption": "Venus",
+        "secondOption": "Mars",
+        "thirdOption": "Jupitar",
+        "fourthOption": "Saturn",
+        "rightOption": "Mars",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Who stopped the killing of twins?",
+        "firstOption": "Mary Slessor",
+        "secondOption": "Albert Schweitzer",
+        "thirdOption": "Mother Teresa",
+        "fourthOption": "David Livingstone",
+        "rightOption": "Mary Slessor",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital of Australia?",
+        "firstOption": "Sydney",
+        "secondOption": "Melbourne",
+        "thirdOption": "Canberra",
+        "fourthOption": "Perth",
+        "rightOption": "Canberra",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital of Madagascar?",
+        "firstOption": "Antananarivo",
+        "secondOption": "lima",
+        "thirdOption": "Ouagadougou",
+        "fourthOption": "Yaonde",
+        "rightOption": "Antananarivo",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the highest mountain in Nigeria?",
+        "firstOption": "Kilimanjaro",
+        "secondOption": "Chappal Waddi",
+        "thirdOption": "Tsaunin Kwaiki",
+        "fourthOption": "Mount Dimlang",
+        "rightOption": "Chappal Waddi",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the highest waterfall in the world?",
+        "firstOption": "Tungela falls",
+        "secondOption": "Angel falls",
+        "thirdOption": "Tres hermanas falls",
+        "fourthOption": "Olo'upena falls",
+        "rightOption": "Angel falls",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Who is the author of the novel '1984'?",
+        "firstOption": "George Orwell",
+        "secondOption": "Aldous Huxley",
+        "thirdOption": "F. Scott Fitzgerald",
+        "fourthOption": "J.D. Salinger",
+        "rightOption": "George Orwell",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "What year did Dele Giwa receive a letter bomb?",
+        "firstOption": "1986",
+        "secondOption": "1989",
+        "thirdOption": "1978",
+        "fourthOption": "1987",
+        "rightOption": "1986",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "Which scientist formulated the theory of general relativity?",
+        "firstOption": "Isaac Newton",
+        "secondOption": "Albert Einstein",
+        "thirdOption": "Galileo Galilei",
+        "fourthOption": "Ernest Rutherford",
+        "rightOption": "Albert Einstein",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "What year did Wole Soyinka win the Nobel prize?",
+        "firstOption": "1986",
+        "secondOption": "1952",
+        "thirdOption": "1972",
+        "fourthOption": "1974",
+        "rightOption": "1986",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "Who was the first blind man to visit mount Everest?",
+        "firstOption": "Erik Weihenmayer",
+        "secondOption": "Richard Cannan",
+        "thirdOption": "Henry Willoughby",
+        "fourthOption": "James Nepal",
+        "rightOption": "Erik Weihenmayer",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "What kind of flower is on the soil of Nigeria's coat of arm?",
+        "firstOption": "Costus spectabilis",
+        "secondOption": "Zinnia",
+        "thirdOption": "Hydrangea",
+        "fourthOption": "Primrose",
+        "rightOption": "Costus spectabilis",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "test second question",
+        "firstOption": "test first option",
+        "secondOption": "test second option",
+        "thirdOption": "test third option",
+        "fourthOption": "test fourth option",
+        "rightOption": "test first option"
+    },
+    
+    {
+        "question": "test second question",
+        "firstOption": "test first option",
+        "secondOption": "test second option",
+        "thirdOption": "test third option",
+        "fourthOption": "test fourth option",
+        "rightOption": "test first option"
+    },
+    {
+        "question": "test second question",
         "firstOption": "test first option",
         "secondOption": "test second option",
         "thirdOption": "test third option",
@@ -16,139 +204,6 @@
         "rightOption": "test first option"
     },
     {
-        "question": "test third question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
         "question": "test second question",
         "firstOption": "test first option",
         "secondOption": "test second option",
