@@ -19,7 +19,7 @@ server.use(cors())
 const verifyToken = async (request, response, next) => {
     try{
         const authorization = request.headers.authorization
-        // console.log("from authorization: ", request.headers)
+        console.log("from authorization: ", request.headers)
         const token = authorization.split(" ")[1]
         const email = jwt.verify(token, process.env.JWT_SECRET_KEY)
         const get_user_details = await auth.getUserDetailsByEmail(email)

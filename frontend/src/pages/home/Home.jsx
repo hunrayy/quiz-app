@@ -96,7 +96,7 @@ const Home = () => {
                 try {
                    
                     Cookie.set('gameModeToken', feedback.data.data.token);
-                
+                    
                     const questions = await Promise.all(feedback.data.data.questions.map(async question => {
                         try {
                             const hashedOption = await bcrypt.hash(question.rightOption, 10);
@@ -110,6 +110,8 @@ const Home = () => {
                     }));
                 
                     await localforage.setItem("questions", questions);
+                    await localforage.setItem("user_email", email);
+
                 
                     navigate("/game-mode", { replace: true });
                 } catch (error) {

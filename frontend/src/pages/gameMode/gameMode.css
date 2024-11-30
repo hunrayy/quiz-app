@@ -18,7 +18,8 @@
     padding: 20px;
     position: relative;
     width: 800px;
-    height: 70vh;
+    /* height: 75vh; */
+    height: 80vh;
     border: 7px solid rgba(255, 255, 255, 0.336);
     /* border: 7px solid rgb(1, 1, 68); */
     /* background: linear-gradient(to left, rgb(9, 9, 128), rgb(23, 1, 104)); */
@@ -90,7 +91,9 @@
     /* width: 100%; */
     /* width: 550px; */
     position: relative;
-    height: 36vh;
+    /* height: 36vh; */
+    height: 40vh;
+
     /* padding: 20px; */
     border: 3px solid rgba(255, 255, 255, 0.705);
     color: white;
@@ -142,6 +145,7 @@
     display: flex;
     gap: 10px;
     padding: 10px 0 0 0;
+    margin-top: 10px;
 }
 .first-option{
     width: 100%;

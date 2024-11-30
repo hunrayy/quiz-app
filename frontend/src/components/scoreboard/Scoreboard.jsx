@@ -37,6 +37,12 @@ const Scoreboard = ({currentQuestion}) => {
     }, [])
 
 
+    const prizeMoneyArray = [
+        '$100', '$200', '$300', '$500', '$1,000', '$2,000', '$4,000', '$8,000', 
+        '$16,000', '$32,000', '$64,000', '$125,000', '$250,000', '$500,000', '$1,000,000'
+    ]
+
+
 
 
 
@@ -64,7 +70,7 @@ const Scoreboard = ({currentQuestion}) => {
         <div className="score-board-cover">
             {/* <p className="score-board-title">SCORE BOARD</p> */}
             <div className="your-score">Your Score</div>
-            <div className="score">$ 100</div>
+            <div className="score">{currentQuestion?.index ? prizeMoneyArray[currentQuestion?.index] : prizeMoneyArray[0]}</div>
             <div className="scores-list">
                 <ul type="none">
                     <li className={has_animation_happened ? "white-color" : "white-color blink"} style={{...(currentQuestion?.index == 14 && {background: "orange", color: "white"})}}>15 $1 MILLION</li>

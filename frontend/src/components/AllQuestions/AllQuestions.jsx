@@ -16,7 +16,9 @@ const AllQuestions =  () => {
 
 
     useEffect(()=>{
-        const token = Cookies.get(import.meta.env.VITE_TOKEN_NAME)
+        // const token = Cookies.get(import.meta.env.VITE_TOKEN_NAME)
+        const token = Cookies.get('loginToken')
+
         console.log(token)
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/get-all-questions`, {
             headers: {
@@ -50,16 +52,16 @@ const AllQuestions =  () => {
 
                         </div>
                         <div style={{padding: "10px", boxShadow: "0px 0px 5px 0px black", borderRadius: "10px", cursor: "pointer"}}>
-                            <Trash3 />
+                            <Trash3 style={{color: "red"}} />
 
                         </div>
 
                     </div>
                                 
                     <div>
-                        <div style={{fontWeight: "bold"}}>
+                        {/* <div style={{fontWeight: "bold"}}>
                             Id: {each_question._id}
-                        </div>
+                        </div> */}
                     </div>
                     <div style={{display: "flex", flexDirection: "column", gap: "0px"}}>
                         <span style={{fontWeight: "bold"}}>Question <PatchQuestion />: </span>
@@ -68,7 +70,7 @@ const AllQuestions =  () => {
                     <div className="options">
                         <span style={{fontWeight: "bold"}}>Options</span>
                         {each_question.options.map((each_option) =>{
-                            return <span>{each_option}</span>
+                            return <span>--{each_option}</span>
                         })}
                     </div>
                     <div style={{fontWeight: "bold"}}>

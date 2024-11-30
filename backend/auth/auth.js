@@ -154,7 +154,8 @@ const auth = (function(){
     }
     const get_all_questions = async(admin_id) => {
         try{
-            const get_all_questions_by_admin_id = await client.db(DB_NAME).collection(TB_QUESTIONS).find({admin_id: admin_id}).toArray()
+            // const get_all_questions_by_admin_id = await client.db(DB_NAME).collection(TB_QUESTIONS).find({admin_id: admin_id}).toArray()
+            const get_all_questions_by_admin_id = await client.db(DB_NAME).collection(TB_QUESTIONS).find().toArray()
             console.log("from auth: ", get_all_questions_by_admin_id)
             return{
                 message: "all questions were successfully retrieved",

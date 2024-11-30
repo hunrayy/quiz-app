@@ -15,9 +15,10 @@ const Error404 = () => {
       }else if(feedback && Cookie.get('loginToken')){
         navigate('/app/private-route/admin/dashboard', {replace: true})
       }else{
+        console.log(true)
         navigate('/', {replace: true})
       }
-  })
+    })
   }
     return <div style={{background: "linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75))"}}>
         {/* <a href="https://codepen.io/uiswarup/full/vYPxywO" target="_blank"> */}

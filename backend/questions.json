@@ -9,6 +9,69 @@
         "difficultyLevel": "easy"
     },
     {
+        "question": "What do bees produce?",
+        "firstOption": "Milk",
+        "secondOption": "Honey",
+        "thirdOption": "Butter",
+        "fourthOption": "Cheese",
+        "rightOption": "Honey",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "How many continents are there?",
+        "firstOption": "5",
+        "secondOption": "6",
+        "thirdOption": "7",
+        "fourthOption": "8",
+        "rightOption": "7",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What color are bananas?",
+        "firstOption": "Blue",
+        "secondOption": "Green",
+        "thirdOption": "Yellow",
+        "fourthOption": "Red",
+        "rightOption": "Yellow",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "How many legs does a spider have?",
+        "firstOption": "6",
+        "secondOption": "8",
+        "thirdOption": "10",
+        "fourthOption": "12",
+        "rightOption": "8",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "Which shape is typically associated with a stop sign?",
+        "firstOption": "Circle",
+        "secondOption": "Triangle",
+        "thirdOption": "Square",
+        "fourthOption": "Octagon",
+        "rightOption": "Octagon",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "Which month has 28 days in a non-leap year?",
+        "firstOption": "January",
+        "secondOption": "February",
+        "thirdOption": "April",
+        "fourthOption": "June",
+        "rightOption": "February",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What is the primary color of the sky on a clear day?",
+        "firstOption": "Red",
+        "secondOption": "Blue",
+        "thirdOption": "Green",
+        "fourthOption": "Yellow",
+        "rightOption": "Blue",
+        "difficultyLevel": "easy"
+    },
+    {
         "question": "Which Planet is closest to the sun?",
         "firstOption": "Mars",
         "secondOption": "Mecury",
@@ -63,6 +126,105 @@
         "difficultyLevel": "hard"
     },
     {
+        "question": "What is the smallest country in the world?",
+        "firstOption": "Monaco",
+        "secondOption": "Vatican City",
+        "thirdOption": "San Marino",
+        "fourthOption": "Liechtenstein",
+        "rightOption": "Vatican City",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Which desert is the largest in the world?",
+        "firstOption": "Sahara",
+        "secondOption": "Arctic Desert",
+        "thirdOption": "Antarctic Desert",
+        "fourthOption": "Gobi Desert",
+        "rightOption": "Antarctic Desert",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Which desert is the hottest in the world?",
+        "firstOption": "Sahara",
+        "secondOption": "Arctic Desert",
+        "thirdOption": "Antarctic Desert",
+        "fourthOption": "Gobi Desert",
+        "rightOption": "Sahara",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the largest land animal?",
+        "firstOption": "African Elephant",
+        "secondOption": "White Rhino",
+        "thirdOption": "Giraffe",
+        "fourthOption": "Hippopotamus",
+        "rightOption": "African Elephant",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the deepest lake in the world?",
+        "firstOption": "Lake Tanganyika",
+        "secondOption": "Lake Baikal",
+        "thirdOption": "Caspian Sea",
+        "fourthOption": "Lake Superior",
+        "rightOption": "Lake Baikal",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the largest island in the world that is not a continent?",
+        "firstOption": "Madagascar",
+        "secondOption": "Greenland",
+        "thirdOption": "New Guinea",
+        "fourthOption": "Borneo",
+        "rightOption": "Greenland",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the coldest place on Earth?",
+        "firstOption": "Arctic",
+        "secondOption": "Greenland",
+        "thirdOption": "Antarctica",
+        "fourthOption": "Siberia",
+        "rightOption": "Antarctica",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the tallest tree species in the world?",
+        "firstOption": "Baobab",
+        "secondOption": "Coast Redwood",
+        "thirdOption": "Douglas Fir",
+        "fourthOption": "Giant Sequoia",
+        "rightOption": "Coast Redwood",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the second longest river in the world?",
+        "firstOption": "Nile River",
+        "secondOption": "Amazon River",
+        "thirdOption": "Yangtze River",
+        "fourthOption": "Mississippi River",
+        "rightOption": "Amazon River",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the longest river in the world?",
+        "firstOption": "Nile River",
+        "secondOption": "Amazon River",
+        "thirdOption": "Yangtze River",
+        "fourthOption": "Mississippi River",
+        "rightOption": "Nile River",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Which African country has the highest population?",
+        "firstOption": "Ethiopia",
+        "secondOption": "South Africa",
+        "thirdOption": "Nigeria",
+        "fourthOption": "Egypt",
+        "rightOption": "Nigeria",
+        "difficultyLevel": "hard"
+    },
+    {
         "question": "Which Planet is known as the 'Red Planet'?",
         "firstOption": "Venus",
         "secondOption": "Mars",
@@ -114,6 +276,24 @@
         "thirdOption": "Tres hermanas falls",
         "fourthOption": "Olo'upena falls",
         "rightOption": "Angel falls",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the tallest building in the world?",
+        "firstOption": "Shanghai Tower",
+        "secondOption": "Burj Khalifa",
+        "thirdOption": "Abraj Al-Bait Clock Tower",
+        "fourthOption": "Taipei 101",
+        "rightOption": "Burj Khalifa",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the largest ocean on Earth?",
+        "firstOption": "Atlantic Ocean",
+        "secondOption": "Indian Ocean",
+        "thirdOption": "Pacific Ocean",
+        "fourthOption": "Southern Ocean",
+        "rightOption": "Pacific Ocean",
         "difficultyLevel": "hard"
     },
     {
