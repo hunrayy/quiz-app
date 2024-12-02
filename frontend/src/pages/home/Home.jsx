@@ -70,6 +70,7 @@ const Home = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const [loading, setLoading] = useState(false)
     const [gamemodeActive, setGamemodeActive] = useState(false)
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -87,6 +88,8 @@ const Home = () => {
     const handleSubmit = async () => {
         if (isValid) {
             setEmail("")
+            setIsChecked(false)
+            setLoading(true)
             const feedback = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/generate_token_for_gamemode`, {
                 user_email: email
             })
@@ -121,11 +124,13 @@ const Home = () => {
                 
 
             }else{
+                setLoading(false)
                 alert("Error navigating to gamemode, please retry")
             }
 
 
         } else {
+            setLoading(false)
             alert("Please enter a valid email and agree to the terms and conditions.");
         }
     };
@@ -182,6 +187,9 @@ const Home = () => {
                                 /> I agree to the terms and conditions
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'right', width: '100%' }}>
+                                {loading ? 
+                                    <span class="spinner-grow"></span>
+                                :
                                 <button 
                                     onClick={handleSubmit} 
                                     className="enter-game-mode" 
@@ -194,6 +202,7 @@ const Home = () => {
                                 >
                                     continue <ArrowRight />
                                 </button>
+                            }
                             </div>
                         </form>
                     </div>

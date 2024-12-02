@@ -195,10 +195,15 @@ const GameMode = () => {
                     setQuestions(storedQuestions);
                     setCurrentQuestion(storedQuestions[0]);
                 }else{
-                    setTimeout(()=> {
+                    if(window.innerWidth > 767){
+                        setTimeout(()=> {
+                            setQuestions(storedQuestions);
+                            setCurrentQuestion(storedQuestions[0]);
+                        }, 9000)
+                    }else{
                         setQuestions(storedQuestions);
                         setCurrentQuestion(storedQuestions[0]);
-                    }, 9000)
+                    }
                 }
                 // Set the questions state
                 // Set the currentQuestion state to the first question

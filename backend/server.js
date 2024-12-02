@@ -16,6 +16,23 @@ const question = require("./question/question")
 server.use(express.json())
 server.use(cors())
 
+
+
+const path = require('path');
+// Serve static files from the React app
+server.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Catch-all route to serve React's index.html
+server.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+  });
+
+
+
+
+
+
+
 const verifyToken = async (request, response, next) => {
     try{
         const authorization = request.headers.authorization

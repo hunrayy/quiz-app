@@ -15,11 +15,17 @@ const Scoreboard = ({currentQuestion}) => {
     useEffect(()=> {
         localforage.getItem('questions').then((feedback) => {
             if(feedback.length == 15){
-                setTimeout(() => {
-                    // Store the value in browser storage after 7 seconds
+                if (window.innerWidth > 767) {  // Check if the screen width is greater than 767px
+                    setTimeout(() => {
+                        // Store the value in browser storage after 7 seconds
+                        Cookie.set("has_animation_happened", new Date().getTime());
+                        set_has_animation_happened(true);
+                    }, 7000);
+                } else {
+                    // Directly set the value for mobile screens without waiting
                     Cookie.set("has_animation_happened", new Date().getTime());
-                    set_has_animation_happened(true)
-                }, 7000);
+                    set_has_animation_happened(true);
+                }
             }else{
                 set_has_animation_happened(false)
             }

@@ -49,10 +49,11 @@
     font-weight: bold;
     color: white;
     gap: 20px;
-    font-size: 20px;
+    /* font-size: 20px; */
    /* color: blueviolet; */
    color: white;
    /* padding-top: 30px; */
+   max-width: 100%;
 }
 .up{
     transform: translateY(-10px);
