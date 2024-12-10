@@ -20,49 +20,94 @@ const Error404 = () => {
       }
     })
   }
-    return <div style={{background: "linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75))"}}>
-        {/* <a href="https://codepen.io/uiswarup/full/vYPxywO" target="_blank"> */}
-  <header class="top-header">
-</header>
+//     return <div style={{background: "linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75))", position: "relative"}}>
+//         {/* <a href="https://codepen.io/uiswarup/full/vYPxywO" target="_blank"> */}
+//   <header class="top-header"></header>
 
-{/* <!--dust particel--> */}
+// {/* <!--dust particel--> */}
+// <div>
+//   <div class="starsec"></div>
+//   <div class="starthird"></div>
+//   <div class="starfourth"></div>
+//   <div class="starfifth"></div>
+// </div>
+// {/* <!--Dust particle end---> */}
+
+
+// <div class="lamp__wrap">
+//   <div class="lamp">
+//     <div class="cable"></div>
+//     <div class="cover"></div>
+//     <div class="in-cover">
+//       <div class="bulb"></div>
+//     </div>
+//     <div class="light"></div>
+//   </div>
+// </div>
+// {/* <!-- END Lamp --> */}
+// <section class="error">
+//   {/* <!-- Content --> */}
+//   <div class="error__content">
+//     <div class="error__message message">
+//       <h1 class="message__title">Page Not Found</h1>
+//       <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
+//     </div>
+//     <div class="error__nav e-nav">
+//       <button class="e-nav__link" onClick={handleNavigateUser}></button>
+//     </div>
+//   </div>
+//   {/* <!-- END Content --> */}
+
+// </section>
+
+//   {/* </a> */}
+
+//     </div>
+
+return <div
+className="error-page-container"
+style={{
+  background: "linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75))",
+  position: "relative",
+  height: "100%",
+  overflow: "hidden",
+  padding: 0,
+  margin: 0,
+}}
+>
+<header className="top-header"></header>
 <div>
-  <div class="starsec"></div>
-  <div class="starthird"></div>
-  <div class="starfourth"></div>
-  <div class="starfifth"></div>
+  <div className="starsec"></div>
+  <div className="starthird"></div>
+  <div className="starfourth"></div>
+  <div className="starfifth"></div>
 </div>
-{/* <!--Dust particle end---> */}
-
-
-<div class="lamp__wrap">
-  <div class="lamp">
-    <div class="cable"></div>
-    <div class="cover"></div>
-    <div class="in-cover">
-      <div class="bulb"></div>
+<div className="lamp__wrap">
+  <div className="lamp">
+    <div className="cable"></div>
+    <div className="cover"></div>
+    <div className="in-cover">
+      <div className="bulb"></div>
     </div>
-    <div class="light"></div>
+    <div className="light"></div>
   </div>
 </div>
-{/* <!-- END Lamp --> */}
-<section class="error">
-  {/* <!-- Content --> */}
-  <div class="error__content">
-    <div class="error__message message">
-      <h1 class="message__title">Page Not Found</h1>
-      <p class="message__text">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.</p>
+<section className="error">
+  <div className="error__content">
+    <div className="error__message message">
+      <h1 className="message__title">Page Not Found</h1>
+      <p className="message__text">
+        We're sorry, the page you were looking for isn't found here. The
+        link you followed may either be broken or no longer exists.
+        Please try again, or take a look at our.
+      </p>
     </div>
-    <div class="error__nav e-nav">
-      <button class="e-nav__link" onClick={handleNavigateUser}></button>
+    <div className="error__nav e-nav">
+      <button className="e-nav__link" onClick={handleNavigateUser}></button>
     </div>
   </div>
-  {/* <!-- END Content --> */}
-
 </section>
+</div>
 
-  {/* </a> */}
-
-    </div>
 }
 export default Error404

@@ -18,14 +18,22 @@ server.use(cors())
 
 
 
-const path = require('path');
-// Serve static files from the React app
-server.use(express.static(path.join(__dirname, '../frontend/dist')));
+// const path = require('path');
+// // Serve static files from the React app
+// server.use(express.static(path.join(__dirname, 'dist')));
+// server.use((req, res, next) => {
+//     if (req.headers['x-forwarded-proto'] !== 'https') {
+//       return res.redirect(`https://${req.headers.host}${req.url}`);
+//     }
+//     next();
+//   });
+  
 
-// Catch-all route to serve React's index.html
-server.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
-  });
+// // Catch-all route to serve React's index.html
+// server.get('*', (request, response) => {
+//     response.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// });
+
 
 
 
@@ -44,7 +52,7 @@ const verifyToken = async (request, response, next) => {
         const resolveUserId = await auth.resolveUserId(_id)
         request.user_id = resolveUserId
 
-        // console.log(resolveUserId)
+        console.log(resolveUserId)
 
         next()
     }catch(error){

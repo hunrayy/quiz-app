@@ -9,6 +9,42 @@
         "difficultyLevel": "easy"
     },
     {
+        "question": "What is the largest planet in our solar system?",
+        "firstOption": "Earth",
+        "secondOption": "Jupiter",
+        "thirdOption": "Mars",
+        "fourthOption": "Venus",
+        "rightOption": "Jupiter",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What is the name of the toy cowboy in 'Toy Story'?",
+        "firstOption": "Buzz",
+        "secondOption": "Woody",
+        "thirdOption": "Rex",
+        "fourthOption": "Slinky",
+        "rightOption": "Woody",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What do cows drink?",
+        "firstOption": "Water",
+        "secondOption": "Milk",
+        "thirdOption": "Juice",
+        "fourthOption": "Soda",
+        "rightOption": "Water",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What is the smallest prime number?",
+        "firstOption": "1",
+        "secondOption": "2",
+        "thirdOption": "3",
+        "fourthOption": "5",
+        "rightOption": "2",
+        "difficultyLevel": "easy"
+    },
+    {
         "question": "What do bees produce?",
         "firstOption": "Milk",
         "secondOption": "Honey",
@@ -117,12 +153,112 @@
         "difficultyLevel": "easy"
     },
     {
+        "question": "What is the capital city of France?",
+        "firstOption": "Rome",
+        "secondOption": "Berlin",
+        "thirdOption": "Paris",
+        "fourthOption": "Madrid",
+        "rightOption": "Paris",
+        "difficultyLevel": "easy"
+    },
+    {
+        "question": "What is the capital city of Bhutan?",
+        "firstOption": "Thimphu",
+        "secondOption": "Paro",
+        "thirdOption": "Punakha",
+        "fourthOption": "Haa",
+        "rightOption": "Thimphu",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Liechtenstein?",
+        "firstOption": "Vaduz",
+        "secondOption": "Schaan",
+        "thirdOption": "Balzers",
+        "fourthOption": "Triesen",
+        "rightOption": "Vaduz",
+        "difficultyLevel": "hard"
+      },
+    
+    {
         "question": "What is the capital of Peru",
         "firstOption": "Madrid",
         "secondOption": "Para",
         "thirdOption": "Lima",
         "fourthOption": "Sucre",
         "rightOption": "Lima",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital of Madagascar?",
+        "firstOption": "Antananarivo",
+        "secondOption": "lima",
+        "thirdOption": "Ouagadougou",
+        "fourthOption": "Yaonde",
+        "rightOption": "Antananarivo",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Burkina Faso?",
+        "firstOption": "Ouagadougou",
+        "secondOption": "Bobo-Dioulasso",
+        "thirdOption": "Koudougou",
+        "fourthOption": "Banfora",
+        "rightOption": "Ouagadougou",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Kiribati?",
+        "firstOption": "Tarawa",
+        "secondOption": "Kiritimati",
+        "thirdOption": "Butaritari",
+        "fourthOption": "Tabuaeran",
+        "rightOption": "Tarawa",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Eswatini (Swaziland)?",
+        "firstOption": "Mbabane",
+        "secondOption": "Manzini",
+        "thirdOption": "Lobamba",
+        "fourthOption": "Siteki",
+        "rightOption": "Mbabane",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Comoros?",
+        "firstOption": "Moroni",
+        "secondOption": "Mutsamudu",
+        "thirdOption": "Fomboni",
+        "fourthOption": "Domoni",
+        "rightOption": "Moroni",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Palau?",
+        "firstOption": "Melekeok",
+        "secondOption": "Ngerulmud",
+        "thirdOption": "Koror",
+        "fourthOption": "Ngardmau",
+        "rightOption": "Ngerulmud",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of Tuvalu?",
+        "firstOption": "Funafuti",
+        "secondOption": "Vaiaku",
+        "thirdOption": "Nukufetau",
+        "fourthOption": "Nanumea",
+        "rightOption": "Funafuti",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the capital city of South Sudan?",
+        "firstOption": "Juba",
+        "secondOption": "Malakal",
+        "thirdOption": "Wau",
+        "fourthOption": "Bor",
+        "rightOption": "Juba",
         "difficultyLevel": "hard"
     },
     {
@@ -150,6 +286,15 @@
         "thirdOption": "Antarctic Desert",
         "fourthOption": "Gobi Desert",
         "rightOption": "Sahara",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "Which desert is the driest in the world?",
+        "firstOption": "Sahara",
+        "secondOption": "Arctic Desert",
+        "thirdOption": "Antarctic Desert",
+        "fourthOption": "Atacama Desert",
+        "rightOption": "Atacama Desert",
         "difficultyLevel": "hard"
     },
     {
@@ -252,15 +397,6 @@
         "difficultyLevel": "hard"
     },
     {
-        "question": "What is the capital of Madagascar?",
-        "firstOption": "Antananarivo",
-        "secondOption": "lima",
-        "thirdOption": "Ouagadougou",
-        "fourthOption": "Yaonde",
-        "rightOption": "Antananarivo",
-        "difficultyLevel": "hard"
-    },
-    {
         "question": "What is the highest mountain in Nigeria?",
         "firstOption": "Kilimanjaro",
         "secondOption": "Chappal Waddi",
@@ -294,6 +430,15 @@
         "thirdOption": "Pacific Ocean",
         "fourthOption": "Southern Ocean",
         "rightOption": "Pacific Ocean",
+        "difficultyLevel": "hard"
+    },
+    {
+        "question": "What is the coldest ocean on Earth?",
+        "firstOption": "Atlantic Ocean",
+        "secondOption": "Indian Ocean",
+        "thirdOption": "Pacific Ocean",
+        "fourthOption": "Southern Ocean",
+        "rightOption": "Atlantic Ocean",
         "difficultyLevel": "hard"
     },
     {
@@ -342,6 +487,51 @@
         "difficultyLevel": "difficult"
     },
     {
+        "question": "What year was the Nobel Prize invented?",
+        "firstOption": "1901",
+        "secondOption": "1895",
+        "thirdOption": "1912",
+        "fourthOption": "1890",
+        "rightOption": "1901",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "Who introduced the Nobel Prize?",
+        "firstOption": "Alfred Nobel",
+        "secondOption": "Marie Curie",
+        "thirdOption": "Albert Einstein",
+        "fourthOption": "James Clerk Maxwell",
+        "rightOption": "Alfred Nobel",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "Which explorer was the first to navigate the Northwest Passage?",
+        "firstOption": "Roald Amundsen",
+        "secondOption": "Sir John Franklin",
+        "thirdOption": "James Cook",
+        "fourthOption": "Henry Hudson",
+        "rightOption": "Roald Amundsen",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "What is the name of the only non-human to officially hold a rank in the British Armed Forces?",
+        "firstOption": "Wojtek the Bear",
+        "secondOption": "Sergeant Stubby",
+        "thirdOption": "Cher Ami",
+        "fourthOption": "Laika",
+        "rightOption": "Wojtek the Bear",
+        "difficultyLevel": "difficult"
+    },
+    {
+        "question": "What is the name of the book written by Isaac Newton that laid the foundation for classical mechanics?",
+        "firstOption": "Principia Mathematica",
+        "secondOption": "Opticks",
+        "thirdOption": "De Revolutionibus",
+        "fourthOption": "Philosophiae Naturalis",
+        "rightOption": "Principia Mathematica",
+        "difficultyLevel": "difficult"
+    },
+    {
         "question": "What kind of flower is on the soil of Nigeria's coat of arm?",
         "firstOption": "Costus spectabilis",
         "secondOption": "Zinnia",
@@ -349,74 +539,5 @@
         "fourthOption": "Primrose",
         "rightOption": "Costus spectabilis",
         "difficultyLevel": "difficult"
-    },
-    {
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },
-    
-    {
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },
-    {
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },
-    {
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },
-    {
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
-    },{
-        "question": "test second question",
-        "firstOption": "test first option",
-        "secondOption": "test second option",
-        "thirdOption": "test third option",
-        "fourthOption": "test fourth option",
-        "rightOption": "test first option"
     }
 ]

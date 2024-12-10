@@ -177,15 +177,24 @@ const Home = () => {
                                 />
                                 <span className="email-info">Ensure you fill in your valid email as this would be used to send your demo reward</span>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'left', width: '100%', gap: '10px' }}>
+
+                            <div style={{ display: 'flex', justifyContent: 'left', width: '100%', gap: '10px'}}>
+                                <div>
                                 <input
                                     type="checkbox"
                                     name=""
                                     id=""
                                     checked={isChecked}
                                     onChange={handleCheckboxChange}
-                                /> I agree to the terms and conditions
+                                /> 
+                                </div>
+                                <p>I agree to the terms and conditions</p>
                             </div>
+
+
+
+
+
                             <div style={{ display: 'flex', justifyContent: 'right', width: '100%' }}>
                                 {loading ? 
                                     <span class="spinner-grow"></span>

@@ -1,9 +1,0 @@
-{
-    "buildpacks": [
-      { "url": "heroku/nodejs" }
-    ],
-    "scripts": {
-      "postdeploy": "cd backend && npm install && npm start"
-    }
-  }
-  

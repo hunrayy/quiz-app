@@ -191,6 +191,26 @@ const auth = (function(){
             //                         .collection(TB_QUESTIONS)
             //                         .aggregate([{ $sample: { size: 15 } }])
             //                         .toArray();
+
+
+        // Check if the collection exists
+        const collections = await client.db(DB_NAME).collection(TB_QUESTIONS).find().limit(5).toArray();
+
+        if (collections.length === 0) {
+            // Collection does not exist, create it and insert dummy questions
+            console.log("Collection not found. Creating collection and inserting dummy questions...");
+            const insertQuestions = await insertDummyQuestions();
+            if (insertQuestions.code === 'success') {
+                console.log("Dummy questions inserted successfully.");
+            } else {
+                console.error("Failed to insert dummy questions.");
+                return {
+                    message: `An error occured while retrieving questions for game mode: ${insertQuestions.reason}`,
+                    code: "error",
+                }
+            }
+        }
+
             const get_questions = await client.db(DB_NAME)
                 .collection(TB_QUESTIONS)
                 .aggregate([
@@ -281,10 +301,14 @@ const auth = (function(){
                     auth.insertQuestionIntoDB(question.question, question.firstOption, question.secondOption, question.thirdOption, question.fourthOption, question.rightOption , question.difficultyLevel)
                 })
                 console.log('default questions inserted into database successfully')
+                return{
+                    message: "default questions inserted into database successfully",
+                    code: "success",
+                }
             }
         }catch(error){
             return{
-                message: "An error occured while inserting questions",
+                message: "An error occured while inserting questions into database",
                 code: "error",
                 reason: error.message
             }
