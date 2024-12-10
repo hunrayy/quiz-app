@@ -341,9 +341,9 @@ const GameMode = () => {
                                             }) :   <div><button className="option" style={{marginBottom: "10px"}}></button> <button className="option"></button></div>}
                                         </div>
                                     </div>
-                                    <div style={{color: "white", background: "red", height: "20%", display: "flex", alignItems: "center", justifyContent: "baseline"}}>
-                                        <p>ghjvjhjvhjvhjbjkbvhhbn h</p>
-                                    </div>
+                                    {/* <div style={{color: "white",    height: "auto", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                                    <p>Developed by Henry Okiyi</p>
+                                    </div> */}
                                 </div>
                                 <div className="scoreboard-cover-div">
                                     <Scoreboard currentQuestion={currentQuestion}/>
