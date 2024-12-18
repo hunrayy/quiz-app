@@ -7,11 +7,11 @@ import "./scoreboard.css"
 import localforage from "localforage";
 const Scoreboard = ({currentQuestion}) => {
     const [has_animation_happened, set_has_animation_happened] = useState(null)
-    // setTimeout(() => {
-    //     // Store the value in browser storage after 7 seconds
-    //     Cookie.set("has_animation_happened", new Date().getTime());
-    //     set_has_animation_happened(true)
-    // }, 7000);
+    setTimeout(() => {
+        // Store the value in browser storage after 7 seconds
+        Cookie.set("has_animation_happened", new Date().getTime());
+        set_has_animation_happened(true)
+    }, 7000);
     useEffect(()=> {
         localforage.getItem('questions').then((feedback) => {
             if(feedback.length == 15){
