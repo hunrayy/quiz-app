@@ -32,15 +32,15 @@ const AdminCreate = () => {
         const { question, firstOption, secondOption, thirdOption, fourthOption, rightOption } = createState;
         const isRightOptionValid = [firstOption, secondOption, thirdOption, fourthOption].includes(rightOption);
         
-        setIsFormValid(
-            question.length > 0 &&
-            firstOption.length > 0 &&
-            secondOption.length > 0 &&
-            thirdOption.length > 0 &&
-            fourthOption.length > 0 &&
-            rightOption.length > 0 &&
-            isRightOptionValid
-        );
+        // setIsFormValid(
+        //     question.length > 0 &&
+        //     firstOption.length > 0 &&
+        //     secondOption.length > 0 &&
+        //     thirdOption.length > 0 &&
+        //     fourthOption.length > 0 &&
+        //     rightOption.length > 0 &&
+        //     isRightOptionValid
+        // );
     }, [createState]);
 
     const handleSubmit = async (e) => {
