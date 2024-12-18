@@ -8,18 +8,18 @@ import Cookie from "js-cookie"
 const Error404 = () => {
   const navigate = useNavigate()
 
-  const handleNavigateUser = () => {
-    localforage.getItem("user_email").then((feedback) => {
-      if (feedback && Cookie.get('gameModeToken')){
-          navigate('/game-mode', {replace: true})
-      }else if(feedback && Cookie.get('loginToken')){
-        navigate('/app/private-route/admin/dashboard', {replace: true})
-      }else{
-        console.log(true)
-        navigate('/', {replace: true})
-      }
-    })
-  }
+  // const handleNavigateUser = () => {
+  //   localforage.getItem("user_email").then((feedback) => {
+  //     if (feedback && Cookie.get('gameModeToken')){
+  //         navigate('/game-mode', {replace: true})
+  //     }else if(feedback && Cookie.get('loginToken')){
+  //       navigate('/app/private-route/admin/dashboard', {replace: true})
+  //     }else{
+  //       console.log(true)
+  //       navigate('/', {replace: true})
+  //     }
+  //   })
+  // }
 //     return <div style={{background: "linear-gradient(to left, rgb(0, 0, 99), rgb(3, 3, 75))", position: "relative"}}>
 //         {/* <a href="https://codepen.io/uiswarup/full/vYPxywO" target="_blank"> */}
 //   <header class="top-header"></header>
