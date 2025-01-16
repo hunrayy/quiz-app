@@ -102,12 +102,12 @@ const Login = () => {
         })
 
         //function to check if a user is currently in gamemode before displaying the page
-        const get_token = Cookie.get('gameModeToken')
-        if(get_token){
-            setGamemodeActive(true)
-        }else{
-            setGamemodeActive(false)
-        }
+        // const get_token = Cookie.get('gameModeToken')
+        // if(get_token){
+        //     setGamemodeActive(true)
+        // }else{
+        //     setGamemodeActive(false)
+        // }
 
     }, [])
 
